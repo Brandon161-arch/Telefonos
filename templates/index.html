@@ -2,18 +2,44 @@
 <html>
 <head>
     <title>Tienda de Teléfonos</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
 
-    <h1>📱 Tienda de Teléfonos</h1>
+<div class="container mt-4">
 
-    <h3>Productos disponibles:</h3>
+    <h1 class="text-center mb-4">📱 Tienda de Teléfonos</h1>
 
-    <ul>
-        <li>iPhone 13</li>
-        <li>Samsung S23</li>
-        <li>Xiaomi Redmi Note 12</li>
-    </ul>
+    <div class="row">
+
+        {% for telefono in telefonos %}
+
+        <div class="col-md-4">
+            <div class="card mb-4 shadow">
+
+                <img src="{{ url_for('static', filename=telefono.imagen) }}" class="card-img-top">
+
+                <div class="card-body text-center">
+
+                    <h5 class="card-title">{{ telefono.nombre }}</h5>
+
+                    <p class="card-text">
+                        ${{ telefono.precio }}
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
 
 </body>
 </html>
